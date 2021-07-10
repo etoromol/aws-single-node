@@ -18,7 +18,7 @@ variable "project" {
 variable "access_key" {
   description = "Name of the SSH key selected to access the instances"
   type        = string
-  default     = ""
+  default     = "key_1-uw1-d-etoromol"
 }
 
 variable "region" {
