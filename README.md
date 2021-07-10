@@ -3,11 +3,9 @@ Terraform enables you to safely and predictably create, change and improve infra
 
 This project is a custom infrastructure built with [Terraform Language (HCL)](https://www.terraform.io/docs/language/index.html) to deploy a single virtual instance on Amazon Web Services. Besides you will have a pool of instances of common interest that you can customize and deploy based on your needs. 
 
-Prerequisites
--------------
+## Prerequisites
 
 To deploy this infrastructure you will need:
-
 * The [Terraform CLI](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started) (0.14.9+) installed.
 * The [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) installed.
 * [An AWS account](https://aws.amazon.com/free/).
@@ -20,7 +18,6 @@ To deploy this infrastructure you will need:
 git clone https://github.com/etoromol/aws-single-node.git
 cd aws-single-node
 ```
-
 2. Initialize the working directory containing Terraform configuration files:
 ```bash
 terraform init
@@ -34,7 +31,7 @@ aws configure
 ```
 *The configuration process stores your credentials in a file at ~/.aws/credentials on MacOS and Linux, or %UserProfile%\.aws\credentials on Windows.*
 
-4. Go to variable.tf file and customize your project's name and environment arguments:
+4. Go to [variable.tf](variable.tf) file and customize your project's name and environment arguments:
 ```hcl
 variable "project" {
   description = "Name and Environment type of the infrastructure"
@@ -45,7 +42,7 @@ variable "project" {
   }
 }
 ```  
-5. Go to variable.tf file and define the access_key default argument with the name of your SSH key:
+5. Go to [variable.tf](variable.tf) file and define the access_key default argument with the name of your SSH key:
 ```hcl
 var "access_key" {
   description = "Name of the SSH key selected to access the instances"
@@ -56,7 +53,7 @@ var "access_key" {
 
 ## Deployment
 
-6. Once you have your infrastructure ready, start with the deployment:
+6. Once your infrastructure ready, start with the deployment:
 ```bash
 terraform apply
 ```
@@ -71,10 +68,8 @@ terraform destroy
 ```
 *The deployment and destroy plans will show it to you by Terraform before and after the initialization. Type yes if you are good, otherwise Terraform will not proceed further.*
 
-Access 
-
 ## License
 
 Copyright (c) 2021 Eduardo Toro.
 
-Licensed under the MIT license.
+Licensed under the [MIT](LICENSE) license.
