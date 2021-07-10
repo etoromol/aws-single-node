@@ -53,11 +53,11 @@ var "access_key" {
 
 ## Deployment
 
-6. Once your infrastructure ready, start with the deployment:
+6. Once your infrastructure is ready, start with the deployment:
 ```bash
 terraform apply
 ```
-7. When your instance is ready, access using the syntax below:
+7. When your instance is ready, access using your ssh key:
 ```bash
 ssh -i "path_to_your_ssh_key" ec2-instance@public_ip_address_given
 ```
@@ -66,7 +66,7 @@ ssh -i "path_to_your_ssh_key" ec2-instance@public_ip_address_given
 ```bash
 terraform destroy
 ```
-*The deployment and destroy plans will show it to you by Terraform before and after the initialization. Type yes if you are good, otherwise Terraform will not proceed further.*
+*The deployment and destroy plans will show to you by Terraform before and after the initialization. Type yes if you are good, otherwise Terraform will not proceed further.*
 
 ## License
 
