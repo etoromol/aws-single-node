@@ -7,17 +7,17 @@
 # Copyright (c) 2021 Eduardo Toro
 
 output "instance-zone" {
-  value = aws_instance.instance_main_1.availability_zone
+  value = aws_instance.instance_main.availability_zone
 }
 
 output "instance-type" {
-  value = aws_instance.instance_main_1.instance_type
+  value = aws_instance.instance_main.instance_type
 }
 
 output "instance-private_ip" {
-  value = aws_instance.instance_main_1.private_ip
+  value = aws_instance.instance_main.private_ip
 }
 
 output "instance-public_ip" {
-  value = aws_instance.instance_main_1.public_ip
+  value = aws_instance.instance_main.public_ip
 }

@@ -59,7 +59,7 @@ terraform apply
 ```
 7. When your instance is ready, access using your ssh key:
 ```bash
-ssh -i "path_to_your_ssh_key" ec2-instance@public_ip_address_given
+ssh -i "path_to_your_ssh_key" ec2-user@public_ip_address_given
 ```
 8. Destroy your infrastructure if it is no longer needed:
 

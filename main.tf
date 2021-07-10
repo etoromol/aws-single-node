@@ -131,7 +131,7 @@ resource "aws_network_interface" "nic_public" {
   }
 }
 
-resource "aws_eip" "eip_main_1" {
+resource "aws_eip" "eip_main" {
   depends_on                = [aws_internet_gateway.igw_main]
   network_interface         = aws_network_interface.nic_public.id
   associate_with_private_ip = "10.0.1.101"
@@ -142,7 +142,7 @@ resource "aws_eip" "eip_main_1" {
   }
 }
 
-resource "aws_instance" "instance_main_1" {
+resource "aws_instance" "instance_main" {
   ami               = var.vm3["ami"]
   instance_type     = var.vm3["instance_type"]
   availability_zone = var.vm3["availability_zone"]
