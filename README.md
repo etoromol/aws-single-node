@@ -31,7 +31,7 @@ aws configure
 ```
 *The configuration process stores your credentials in a file at ~/.aws/credentials on MacOS and Linux, or %UserProfile%\.aws\credentials on Windows.*
 
-4. Go to [variable.tf](variable.tf) file and customize your project's name and environment arguments:
+4. Go to [variable.tf](variables.tf) file and customize your project's name and environment arguments:
 ```hcl
 variable "project" {
   description = "Name and Environment type of the infrastructure"
@@ -42,7 +42,7 @@ variable "project" {
   }
 }
 ```  
-5. Go to [variable.tf](variable.tf) file and define the access_key default argument with the name of your SSH key:
+5. Go to [variable.tf](variables.tf) file and define the access_key default argument with the name of your SSH key:
 ```hcl
 var "access_key" {
   description = "Name of the SSH key selected to access the instances"
