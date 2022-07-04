@@ -1,5 +1,6 @@
 # aws-single-node
-Terraform enables you to safely and predictably create, change and improve infrastructures. This allows a blueprint of your datacenter to be versioned and treated as you would any other code. Additionally, infrastuctures can be shared and re-used. 
+Terraform enables you to safely and predictably create, change and improve infrastructures. This allows a blueprint of your datacenter to be versioned and treated as you would any other code. Additionally, infrastuctures can be shared
+and re-used. 
 
 This project is a custom infrastructure built with [Terraform Language (HCL)](https://www.terraform.io/docs/language/index.html) to deploy a single virtual instance on Amazon Web Services. Besides you will have a pool of instances of common interest that you can customize and deploy based on your needs. 
 
@@ -31,23 +32,24 @@ aws configure
 ```
 *The configuration process stores your credentials in a file at ~/.aws/credentials on MacOS and Linux, or %UserProfile%\.aws\credentials on Windows.*
 
-4. Go to [variable.tf](variables.tf) file and customize your project's name and environment arguments:
+4. Go to [variable.tf](variables.tf) file and customize your project's default
+name "devpod":
 ```hcl
 variable "project" {
-  description = "Name and Environment type of the infrastructure"
-  type        = map(string)
-  default = {
-    "name"        = "aws_sandbox" <-
-    "environment" = "d"           <-
-  }
+  description = "Project name of the infrastructure in aws"
+  type        = string
+  default     = "devpod" <-
 }
-```  
-5. Go to [variable.tf](variables.tf) file and define the access_key default argument with the name of your SSH key:
+```
+*This step is optional.*
+
+5. Go to [variable.tf](variables.tf) file and define the access_key name
+argument with the real name of your SSH key to access the instances:
 ```hcl
-var "access_key" {
-  description = "Name of the SSH key selected to access the instances"
-  type = string
-  default = "" <-
+variable "access_key" {
+  description = "SSH key name used to connect to instances"
+  type        = string
+  default     = "" <-
 }
 ```  
 
@@ -59,17 +61,19 @@ terraform apply
 ```
 7. When your instance is ready, access using your ssh key:
 ```bash
-ssh -i "path_to_your_ssh_key" ec2-user@public_ip_address_given
+ssh -i "path_to_your_ssh_key" ec2-user@instance_public_ip
 ```
 8. Destroy your infrastructure if it is no longer needed:
 
 ```bash
 terraform destroy
 ```
-*The deployment and destroy plans will show to you by Terraform before and after the initialization. Type yes if you are good, otherwise Terraform will not proceed further.*
+*The deployment and destroy plans will be showed to you by Terraform before and
+after the initialization. Type yes if you are good, otherwise Terraform will
+not proceed further.*
 
 ## License
 
-Copyright (c) 2021 Eduardo Toro.
+Copyright (c) 2022 Eduardo Toro.
 
 Licensed under the [MIT](LICENSE) license.
