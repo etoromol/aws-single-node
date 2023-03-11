@@ -1,23 +1,24 @@
 # outputs.tf
-# aws-single-node
+# module aws-single-node
 #
-# Output variables that display information 
-# from the ec2-instance created. 
+# These are output variables. They provide a convenient way to get useful data 
+# from the infrastructure during the runtime of the cli commands: 
+# "terraform plan", "terraform apply" and "terraform output".
 #
-# Copyright (c) 2021 Eduardo Toro
+# Copyright (c) 2023 Eduardo Toro
 
-output "instance-zone" {
-  value = aws_instance.instance_main.availability_zone
+output "vm-zone" {
+  value = aws_instance.ec2_01.availability_zone
 }
 
-output "instance-type" {
-  value = aws_instance.instance_main.instance_type
+output "vm-tier" {
+  value = aws_instance.ec2_01.instance_type
 }
 
-output "instance-private_ip" {
-  value = aws_instance.instance_main.private_ip
+output "vm-privte-ip" {
+  value = aws_instance.ec2_01.private_ip
 }
 
-output "instance-public_ip" {
-  value = aws_instance.instance_main.public_ip
+output "vm-public-ip" {
+  value = aws_eip.eip_01.public_ip
 }
