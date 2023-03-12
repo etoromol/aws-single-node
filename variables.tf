@@ -1,45 +1,41 @@
 # variables.tf
-# aws-single-node
+# module aws-single-node
 #
-# Var component of the root module. Contain the global variables used 
-# by the Main component.
+# Variable component of the root module. It contains all global variables used 
+# by the Main component (main.tf).
 #
-# Copyright (c) 2022 Eduardo Toro
+# Copyright (c) 2023 Eduardo Toro
 
 variable "project" {
-  description = "Project name of the infrastructure in aws"
-  type        = string
-  default     = "devpod"
-}
-
-variable "access_key" {
-  description = "SSH key name used to connect to instances"
-  type        = string
-  default     = ""
+  description = "Cloud VM Infrastructure as Code"
+  type        = map(string)
+  default = {
+    tag        = "cloud-vm-shell"
+    access_key = "etoromol-cloud-key"
+  }
 }
 
 variable "region" {
-  description = "AWS zone regions dictionary"
+  description = "Dictionary of AWS Availability Zones"
   type        = map(string)
   default = {
-    "ue1"  = "us-east-1"
-    "ue2"  = "us-east-2"
-    "ue2a" = "us-east-2a"
-    "uw1"  = "us-west-1"
-    "uw2"  = "us-west-2"
-    "uw1b" = "us-west-1b"
-    "uw1c" = "us-west-1c"
+    ue1  = "us-east-1"
+    ue2  = "us-east-2"
+    ue2a = "us-east-2a"
+    uw1  = "us-west-1"
+    uw2  = "us-west-2"
+    uw1b = "us-west-1b"
+    uw1c = "us-west-1c"
   }
 }
 
 variable "netblock" {
-  description = "Network subnets table"
+  description = "Network block"
   type        = map(string)
   default = {
-    "default" = "0.0.0.0/0"
-    "network" = "10.0.0.0/16"
-    "public"  = "10.0.1.0/24"
-    "private" = "10.0.2.0/24"
+    default = "0.0.0.0/0"
+    network = "10.0.0.0/16"
+    cloud   = "10.0.1.0/24"
   }
 }
 
@@ -199,6 +195,30 @@ variable "vm_13" {
   default = {
     "name"              = "windows_2019"
     "ami"               = "ami-0c645579c7f157046"
+    "instance_type"     = "t2.micro"
+    "availability_zone" = "us-west-1b"
+    "key_name"          = ""
+  }
+}
+
+variable "vm_14" {
+  description = "Amazon Linux 2"
+  type        = map(any)
+  default = {
+    "name"              = "aws_linux_2"
+    "ami"               = "ami-0ed05376b59b90e46"
+    "instance_type"     = "t2.micro"
+    "availability_zone" = "us-west-1b"
+    "key_name"          = ""
+  }
+}
+
+variable "vm_15" {
+  description = "Microsoft Windows Server 2022 Base"
+  type        = map(any)
+  default = {
+    "name"              = "windows_2022"
+    "ami"               = "ami-031b64cec4b201110"
     "instance_type"     = "t2.micro"
     "availability_zone" = "us-west-1b"
     "key_name"          = ""
